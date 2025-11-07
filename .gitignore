@@ -51,6 +51,7 @@ dist/
 build/
 out/
 .next/
+_next/
 
 # Logs
 *.log
