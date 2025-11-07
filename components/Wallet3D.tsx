@@ -1226,10 +1226,6 @@ export default function Wallet3D() {
           alpha: true,
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.0, // Снижен для реализма
-          shadowMap: {
-            enabled: true,
-            type: THREE.PCFSoftShadowMap
-          }
         }}
         shadows
         dpr={mobile ? 1 : 2}
@@ -1276,11 +1272,8 @@ export default function Wallet3D() {
         {/* Volumetric fog (плотность 0.05) */}
         <fog attach="fog" args={['#0B0C12', 1, 12]} />
         
-        {/* Environment для отражений - улучшенный */}
-        <Environment 
-          preset="night"
-          environmentIntensity={1.5}
-        />
+        {/* Environment для отражений */}
+        <Environment preset="night" />
         
         
         {/* Фон */}
