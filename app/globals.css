@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Satoshi - премиальный шрифт, используем Inter как замену (они очень похожи) */
+/* Для использования оригинального Satoshi нужна лицензия от PangramPangram */
+/* Inter - бесплатная альтернатива с похожим стилем */
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #ffffff;
+  --primary: #8B5CF6;
+  --accent: #10B981;
+  --solana-purple: #9945FF;
+  --solana-green: #14F195;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-satoshi), var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Типографика - Space Grotesk для заголовков */
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.02em; /* Межбуквенный интервал для брендового вида */
+}
+
+/* Стили для заголовков */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.02em;
+  font-weight: 700; /* Space Grotesk Bold */
+}
+
+/* Подзаголовки */
+.subtitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 500; /* Space Grotesk Medium */
+  letter-spacing: 0.01em;
+}
+
+/* Основной текст - Satoshi (через Inter как замену) */
+/* Satoshi и Inter очень похожи, Inter - бесплатная альтернатива */
+body, p, span, button, input, textarea, select {
+  font-family: var(--font-satoshi), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400; /* Regular */
+  letter-spacing: 0.01em;
+}
+
+/* Если есть лицензия на Satoshi, раскомментируйте и добавьте файлы шрифта: */
+/*
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body, p, span {
+  font-family: 'Satoshi', var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*/
+
+/* Премиальные эффекты для текста */
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.text-gradient-402 {
+  background: linear-gradient(90deg, #00FF9C, #00C6FF, #7B61FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+}
+
+.text-shadow-depth {
+  text-shadow: 0 2px 4px rgba(11, 15, 21, 0.4);
+}
+
+/* Анимация появления текста (fade + upward motion 20px) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Дополнительные премиальные эффекты */
+.text-premium {
+  letter-spacing: 0.02em;
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.2),
+    0 2px 4px rgba(11, 15, 21, 0.4);
+}
+
+/* Градиент для ключевых слов */
+.text-gradient-keyword {
+  background: linear-gradient(90deg, #00FF9C, #00C6FF, #7B61FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.gradient-border {
+  position: relative;
+  background: rgba(10, 10, 15, 0.8);
+  border-radius: 1rem;
+  padding: 1px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, #10B981, #8B5CF6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+.glass-effect {
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.network-grid {
+  background-image: 
+    linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.cursor-glow {
+  cursor: none;
+}
+
+.cursor-glow::after {
+  content: '';
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.6);
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  top: 50%;
+  left: 50%;
+  animation: ripple 0.6s;
+  opacity: 0;
+}
+
+.ripple-effect:active::after {
+  animation: ripple 0.6s;
+}
+
+/* 402 Mode Styles */
+.402-mode {
+  --background: #0a1a0a;
+}
+
+.402-mode .network-grid {
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.15) 1px, transparent 1px);
+}
+
+.402-mode .glow-primary {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+}
+
+.402-mode .glow-accent {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+}
+
