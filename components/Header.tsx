@@ -116,11 +116,11 @@ export default function Header() {
 
             {/* X Button */}
             <a
-              href="https://x.com/FILvault"
+              href="https://x.com/FILvault_ink"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-primary/10 transition-colors group"
-              title="Follow @FILvault on X"
+              title="Follow @FILvault_ink on X"
               aria-label="Follow FilVault on X (Twitter)"
             >
               <svg className="w-10 h-10 text-foreground group-hover:text-fil-blue transition-colors" viewBox="0 0 24 24" fill="currentColor">
