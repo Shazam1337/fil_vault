@@ -7,12 +7,14 @@
 /* Inter - бесплатная альтернатива с похожим стилем */
 
 :root {
-  --background: #0a0a0f;
+  --background: #001A26;
   --foreground: #ffffff;
-  --primary: #8B5CF6;
-  --accent: #10B981;
-  --solana-purple: #9945FF;
-  --solana-green: #14F195;
+  --primary: #0090FF;
+  --accent: #00F6FF;
+  --fil-blue: #0090FF;
+  --fil-cyan: #00F6FF;
+  --fil-glow: #33C3FF;
+  --fil-dark: #001A26;
 }
 
 * {
@@ -91,8 +93,8 @@ body, p, span {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-.text-gradient-402 {
-  background: linear-gradient(90deg, #00FF9C, #00C6FF, #7B61FF);
+.text-gradient-fil {
+  background: linear-gradient(90deg, #0090FF, #00F6FF, #33C3FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -129,7 +131,7 @@ body, p, span {
 
 /* Градиент для ключевых слов */
 .text-gradient-keyword {
-  background: linear-gradient(90deg, #00FF9C, #00C6FF, #7B61FF);
+  background: linear-gradient(90deg, #0090FF, #00F6FF, #33C3FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -139,7 +141,7 @@ body, p, span {
 
 .gradient-border {
   position: relative;
-  background: rgba(10, 10, 15, 0.8);
+  background: rgba(0, 26, 38, 0.8);
   border-radius: 1rem;
   padding: 1px;
 }
@@ -150,30 +152,30 @@ body, p, span {
   inset: 0;
   border-radius: 1rem;
   padding: 1px;
-  background: linear-gradient(135deg, #10B981, #8B5CF6);
+  background: linear-gradient(135deg, #0090FF, #00F6FF);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
 
 .glow-primary {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 20px rgba(0, 144, 255, 0.5);
 }
 
 .glow-accent {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 20px rgba(0, 246, 255, 0.5);
 }
 
 .glass-effect {
-  background: rgba(10, 10, 15, 0.7);
+  background: rgba(0, 26, 38, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .network-grid {
   background-image: 
-    linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(0, 144, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 144, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -228,22 +230,12 @@ body, p, span {
   animation: ripple 0.6s;
 }
 
-/* 402 Mode Styles */
-.402-mode {
-  --background: #0a1a0a;
+/* Filecoin Vault Glow Effects */
+.vault-glow {
+  box-shadow: 0 0 30px rgba(0, 144, 255, 0.4), 0 0 60px rgba(0, 246, 255, 0.2);
 }
 
-.402-mode .network-grid {
-  background-image: 
-    linear-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 185, 129, 0.15) 1px, transparent 1px);
-}
-
-.402-mode .glow-primary {
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
-}
-
-.402-mode .glow-accent {
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+.vault-glow-strong {
+  box-shadow: 0 0 40px rgba(0, 144, 255, 0.6), 0 0 80px rgba(0, 246, 255, 0.3);
 }
 

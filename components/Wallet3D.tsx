@@ -69,11 +69,11 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
       const pulse = Math.sin(state.clock.elapsedTime * (Math.PI / 3)) * 0.1 + 0.9
       materialRef.current.emissiveIntensity = isOpen ? 0.4 * pulse : (hovered ? 0.25 * pulse : 0.2 * pulse)
       
-      // Градиентный цвет от #00FF9C к #00C6FF
+      // Градиентный цвет от #0090FF к #00F6FF (Filecoin)
       const gradientShift = Math.sin(state.clock.elapsedTime * 0.5) * 0.1
       materialRef.current.emissive = new THREE.Color().lerpColors(
-        new THREE.Color('#00FF9C'),
-        new THREE.Color('#00C6FF'),
+        new THREE.Color('#0090FF'),
+        new THREE.Color('#00F6FF'),
         0.3 + gradientShift
       )
       
@@ -110,7 +110,7 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
       <mesh position={[0, 0, 0.71]} castShadow>
         <planeGeometry args={[2.1, 0.9]} />
         <meshStandardMaterial
-          color="#00C6A8"
+          color="#0090FF"
           transparent
           opacity={0.03}
           roughness={0.9}
@@ -145,9 +145,9 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
           clearcoat={0.8}
           clearcoatRoughness={0.2}
           ior={1.45}
-          color="#00C6A8" // Основной цвет корпуса
+          color="#0090FF" // Основной цвет корпуса (Filecoin blue)
           envMapIntensity={1.8} // Усиленные отражения
-          emissive="#00C6FF"
+          emissive="#0090FF"
           emissiveIntensity={0.2}
           side={THREE.DoubleSide}
           // Вариации для реализма
@@ -163,8 +163,8 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
         position={[0, 0, 0.01]}
       >
         <meshPhysicalMaterial
-          color="#00C6A8"
-          emissive="#00FF9C"
+          color="#0090FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.4} // Усилен
           transmission={0.5} // Усилен
           thickness={0.3}
@@ -184,8 +184,8 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
         position={[0, 0, 0.02]}
       >
         <meshPhysicalMaterial
-          color="#00FF9C"
-          emissive="#00FF9C"
+          color="#0090FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.2}
           transmission={0.3}
           thickness={0.2}
@@ -220,8 +220,8 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
         position={[0, 0.05, 0.06]}
       >
         <meshStandardMaterial
-          color="#00FF9C"
-          emissive="#00FF9C"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.6}
           transparent
           opacity={0.3}
@@ -269,7 +269,7 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
         smoothness={8}
       >
         <meshStandardMaterial
-          color="#00FFD4"
+          color="#00F6FF"
           emissive="#00FFD4"
           emissiveIntensity={0.6}
           transparent
@@ -282,8 +282,8 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
       <mesh position={[0.8, -0.35, 0.71]}>
         <boxGeometry args={[0.3, 0.02, 0.01]} />
         <meshStandardMaterial
-          color="#00FF9C"
-          emissive="#00FF9C"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.4}
           transparent
           opacity={0.6}
@@ -294,8 +294,8 @@ function WalletBody({ hovered, isOpen }: { hovered: boolean; isOpen: boolean }) 
       <mesh position={[-1.0, 0.35, 0.71]}>
         <circleGeometry args={[0.05, 16]} />
         <meshStandardMaterial
-          color="#00C6FF"
-          emissive="#00C6FF"
+          color="#0090FF"
+          emissive="#0090FF"
           emissiveIntensity={0.3}
           transparent
           opacity={0.4}
@@ -381,7 +381,7 @@ function WalletLid({ isOpen, hovered }: { isOpen: boolean; hovered: boolean }) {
           clearcoat={1}
           clearcoatRoughness={0.05} // Более глянцевое
           color="#0a0a0f"
-          emissive="#00FF9C"
+          emissive="#00F6FF"
           emissiveIntensity={0.4}
           transparent
           opacity={0.75}
@@ -391,84 +391,35 @@ function WalletLid({ isOpen, hovered }: { isOpen: boolean; hovered: boolean }) {
         />
       </RoundedBox>
       
-      {/* Текст "wallet402" на крышке - выгравированный/подсвеченный */}
+      {/* Текст "F" (FilVault) на крышке - выгравированный/подсвеченный */}
       <group position={[0, 0, 0.66]}>
         {/* Свечение вокруг текста */}
         <mesh position={[0, 0, -0.01]}>
           <planeGeometry args={[0.8, 0.12]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={0.8}
           transparent
             opacity={0.3}
         />
       </mesh>
-        {/* Буквы "wallet402" - упрощённая геометрия */}
+        {/* Буква "F" (FilVault) - упрощённая геометрия */}
         <group>
-          {/* w */}
-          <mesh position={[-0.28, 0, 0]}>
-            <boxGeometry args={[0.04, 0.06, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
+          {/* F - вертикальная линия */}
+          <mesh position={[-0.05, 0, 0]}>
+            <boxGeometry args={[0.015, 0.08, 0.01]} />
+            <meshStandardMaterial color="#33C3FF" emissive="#33C3FF" emissiveIntensity={0.7} />
           </mesh>
-          {/* a */}
-          <mesh position={[-0.2, 0, 0]}>
-            <torusGeometry args={[0.025, 0.008, 8, 16]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
+          {/* F - верхняя горизонтальная линия */}
+          <mesh position={[0.02, 0.03, 0]}>
+            <boxGeometry args={[0.05, 0.015, 0.01]} />
+            <meshStandardMaterial color="#33C3FF" emissive="#33C3FF" emissiveIntensity={0.7} />
           </mesh>
-          {/* l */}
-          <mesh position={[-0.12, 0, 0]}>
-            <boxGeometry args={[0.015, 0.06, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[-0.08, 0, 0]}>
-            <boxGeometry args={[0.015, 0.06, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          {/* e */}
-          <mesh position={[-0.02, 0, 0]}>
-            <torusGeometry args={[0.025, 0.008, 8, 16]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          {/* t */}
-          <mesh position={[0.06, 0, 0]}>
+          {/* F - средняя горизонтальная линия */}
+          <mesh position={[0.02, 0, 0]}>
             <boxGeometry args={[0.04, 0.015, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[0.08, 0.02, 0]}>
-            <boxGeometry args={[0.015, 0.04, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          {/* 4 */}
-          <mesh position={[0.16, 0, 0]}>
-            <boxGeometry args={[0.015, 0.06, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[0.2, 0, 0]}>
-            <boxGeometry args={[0.015, 0.06, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[0.18, 0.03, 0]}>
-            <boxGeometry args={[0.04, 0.015, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          {/* 0 */}
-          <mesh position={[0.26, 0, 0]}>
-            <torusGeometry args={[0.025, 0.008, 8, 16]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          {/* 2 */}
-          <mesh position={[0.32, 0.03, 0]}>
-            <boxGeometry args={[0.04, 0.015, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[0.32, 0, 0]}>
-            <boxGeometry args={[0.04, 0.015, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
-          </mesh>
-          <mesh position={[0.32, -0.03, 0]}>
-            <boxGeometry args={[0.04, 0.015, 0.01]} />
-            <meshStandardMaterial color="#29FFD3" emissive="#29FFD3" emissiveIntensity={0.7} />
+            <meshStandardMaterial color="#33C3FF" emissive="#33C3FF" emissiveIntensity={0.7} />
           </mesh>
         </group>
       </group>
@@ -482,8 +433,8 @@ function WalletLid({ isOpen, hovered }: { isOpen: boolean; hovered: boolean }) {
       >
         <meshStandardMaterial
           ref={edgeGlowRef}
-          color="#00FF9C"
-          emissive="#00FF9C"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.5}
           transparent
           opacity={0.3}
@@ -496,8 +447,8 @@ function WalletLid({ isOpen, hovered }: { isOpen: boolean; hovered: boolean }) {
         <boxGeometry args={[2.1, 0.02, 0.01]} />
         <meshStandardMaterial
           ref={seamGlowRef}
-          color="#00FF9C"
-          emissive="#00FF9C"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.8}
           transparent
           opacity={0.4}
@@ -507,8 +458,8 @@ function WalletLid({ isOpen, hovered }: { isOpen: boolean; hovered: boolean }) {
   )
 }
 
-// Компонент надписи "402" - гравировка с внутренним свечением
-function Emblem402({ hovered }: { hovered: boolean }) {
+// Компонент надписи "F" (FilVault) - гравировка с внутренним свечением
+function EmblemF({ hovered }: { hovered: boolean }) {
   const emblemRef = useRef<THREE.Group>(null)
   const textMaterialRef = useRef<THREE.MeshStandardMaterial>(null)
   const glowRef = useRef<THREE.MeshStandardMaterial>(null)
@@ -544,8 +495,8 @@ function Emblem402({ hovered }: { hovered: boolean }) {
         <planeGeometry args={[0.35, 0.18]} />
         <meshStandardMaterial
           ref={innerGlowRef}
-          color="#00FFC6"
-          emissive="#00FFC6"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={0.5}
           transparent
           opacity={0.3}
@@ -557,23 +508,23 @@ function Emblem402({ hovered }: { hovered: boolean }) {
         <planeGeometry args={[0.3, 0.15]} />
         <meshStandardMaterial
           ref={glowRef}
-          color="#00FFC6"
-          emissive="#00FFC6"
+          color="#00F6FF"
+          emissive="#00F6FF"
           emissiveIntensity={1.0}
           transparent
           opacity={0.4}
         />
       </mesh>
       
-      {/* Текст "402" - используем геометрию */}
+      {/* Текст "F" (FilVault) - используем геометрию */}
       <group>
         {/* Цифра "4" */}
         <mesh position={[-0.08, 0.02, 0]}>
           <boxGeometry args={[0.015, 0.08, 0.01]} />
         <meshStandardMaterial
             ref={textMaterialRef}
-            color="#00FFC6"
-            emissive="#00FFC6"
+            color="#00F6FF"
+            emissive="#00F6FF"
             emissiveIntensity={hovered ? 0.8 : 0.5}
             metalness={1}
             roughness={0.1}
@@ -583,16 +534,16 @@ function Emblem402({ hovered }: { hovered: boolean }) {
         <mesh position={[-0.04, 0.02, 0]}>
           <boxGeometry args={[0.015, 0.08, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
         <mesh position={[-0.06, 0.05, 0]}>
           <boxGeometry args={[0.05, 0.015, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
@@ -600,8 +551,8 @@ function Emblem402({ hovered }: { hovered: boolean }) {
         <mesh position={[0, 0, 0]}>
           <torusGeometry args={[0.04, 0.012, 8, 32]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
@@ -609,40 +560,40 @@ function Emblem402({ hovered }: { hovered: boolean }) {
         <mesh position={[0.08, 0.05, 0]}>
           <boxGeometry args={[0.05, 0.015, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
         <mesh position={[0.08, 0, 0]}>
           <boxGeometry args={[0.05, 0.015, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
         <mesh position={[0.08, -0.05, 0]}>
           <boxGeometry args={[0.05, 0.015, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
         <mesh position={[0.06, 0.025, 0]}>
           <boxGeometry args={[0.015, 0.04, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
           />
         </mesh>
         <mesh position={[0.1, -0.025, 0]}>
           <boxGeometry args={[0.015, 0.04, 0.01]} />
           <meshStandardMaterial
-            color="#29FFD3"
-            emissive="#29FFD3"
+            color="#33C3FF"
+            emissive="#33C3FF"
             emissiveIntensity={hovered ? 0.8 : 0.6}
         />
       </mesh>
@@ -674,7 +625,7 @@ function Token({ symbol, position, rotation, isActive, hovered, isOpen }: TokenP
         // Фиолетово-бирюзовый глянец
         return {
           color: '#9945FF',
-          emissive: '#00C6FF',
+          emissive: '#0090FF',
           metalness: 0.4,
           roughness: 0.15,
           transmission: 0.7,
@@ -836,7 +787,7 @@ function Token({ symbol, position, rotation, isActive, hovered, isOpen }: TokenP
         {/* Гравировка эмблемы (упрощённая геометрия) */}
         {symbol === 'SOL' && (
           <>
-            {/* Три полоски Solana */}
+            {/* Символ Filecoin */}
             <mesh position={[0, 0.03, 0.001]}>
               <boxGeometry args={[0.06, 0.01, 0.002]} />
               <meshStandardMaterial color="#FFFFFF" emissive="#FFFFFF" emissiveIntensity={0.5} />
@@ -917,8 +868,8 @@ function OpenParticles({ isOpen }: { isOpen: boolean }) {
         <mesh key={i} position={[0, i * 0.15 - 0.3, 0]} rotation={[0, 0, Math.PI / 2]}>
           <boxGeometry args={[1.5, 0.02, 0.01]} />
           <meshStandardMaterial
-            color="#00FF9C"
-            emissive="#00FF9C"
+            color="#00F6FF"
+            emissive="#00F6FF"
             emissiveIntensity={0.8}
             transparent
             opacity={0.6}
@@ -929,7 +880,7 @@ function OpenParticles({ isOpen }: { isOpen: boolean }) {
   )
 }
 
-// Фоновая сетка Solana-style
+// Фоновая сетка Filecoin-style
 function BackgroundGrid() {
   const gridRef = useRef<THREE.Group>(null)
   const vGeometryRef = useRef<THREE.BufferGeometry>(null)
@@ -974,21 +925,21 @@ function BackgroundGrid() {
 
   return (
     <group ref={gridRef} position={[0, 0, -5]}>
-        {/* Фон - чёрный с фиолетовым градиентом (#0B0C12) */}
+        {/* Фон - глубокий синий с Filecoin градиентом (#001A26) */}
       <mesh>
         <planeGeometry args={[20, 20]} />
         <meshStandardMaterial
-            color="#0B0C12"
+            color="#001A26"
             transparent
             opacity={0.95}
           />
         </mesh>
         
-        {/* Дополнительный фиолетовый градиент */}
+        {/* Дополнительный синий градиент */}
         <mesh position={[0, 0, 0.005]}>
           <planeGeometry args={[20, 20]} />
           <meshStandardMaterial
-            color="#1a0a1f"
+            color="#001A3F"
           transparent
           opacity={0.5}
         />
@@ -997,12 +948,12 @@ function BackgroundGrid() {
       {/* Сетка */}
       <lineSegments>
         <bufferGeometry ref={vGeometryRef} />
-        <lineBasicMaterial color="#00C6FF" transparent opacity={0.1} />
+        <lineBasicMaterial color="#0090FF" transparent opacity={0.1} />
       </lineSegments>
       
       <lineSegments>
         <bufferGeometry ref={hGeometryRef} />
-        <lineBasicMaterial color="#00C6FF" transparent opacity={0.1} />
+        <lineBasicMaterial color="#0090FF" transparent opacity={0.1} />
       </lineSegments>
     </group>
   )
@@ -1039,7 +990,7 @@ function BackgroundParticles() {
           />
         </bufferGeometry>
         {/* Ambient particles - редкие световые точки вокруг (opacity 0.05) */}
-        <pointsMaterial size={0.01} color="#00C6FF" transparent opacity={0.05} />
+        <pointsMaterial size={0.01} color="#0090FF" transparent opacity={0.05} />
       </points>
   )
 }
@@ -1111,7 +1062,7 @@ function Wallet({ isOpen, onToggle, hovered }: { isOpen: boolean; onToggle: () =
     >
       <WalletBody hovered={hovered} isOpen={isOpen} />
       <WalletLid isOpen={isOpen} hovered={hovered} />
-      <Emblem402 hovered={hovered} />
+      <EmblemF hovered={hovered} />
       
       {/* Токены внутри - расположены в полукруге, частично выступают из кошелька */}
         {isOpen && (
@@ -1139,10 +1090,10 @@ function Wallet({ isOpen, onToggle, hovered }: { isOpen: boolean; onToggle: () =
             <sphereGeometry args={[1.6, 32, 32]} />
             <meshStandardMaterial
               ref={glowRef}
-              color="#00FF9C"
+              color="#00F6FF"
               transparent
               opacity={0.1}
-              emissive="#00FF9C"
+              emissive="#00F6FF"
               emissiveIntensity={0.8}
             />
           </mesh>
@@ -1232,12 +1183,12 @@ export default function Wallet3D() {
       >
         <AnimatedCamera isOpen={isOpen} />
         
-        {/* 3D-сцена с атмосферой Solana - 3 источника света */}
-        {/* Основной источник света: color: #00FFD4, intensity: 1, position: [2, 3, 2] */}
+        {/* 3D-сцена с атмосферой Filecoin - 3 источника света */}
+        {/* Основной источник света: color: #0090FF, intensity: 1, position: [2, 3, 2] */}
         <directionalLight
           position={[2, 3, 2]}
           intensity={1.2} // Усилен для контраста
-          color="#00FFD4"
+          color="#0090FF"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -1245,32 +1196,32 @@ export default function Wallet3D() {
           shadow-radius={4}
         />
         
-        {/* Контровой (фиолетовый): color: #7B61FF, intensity: 0.7, position: [-3, 2, -1] */}
+        {/* Контровой (синий): color: #00F6FF, intensity: 0.7, position: [-3, 2, -1] */}
         <directionalLight
           position={[-3, 2, -1]}
           intensity={0.8} // Усилен для контраста
-          color="#7B61FF"
+          color="#00F6FF"
         />
         
-        {/* Ambient: color: #00B3FF, intensity: 0.3 */}
-        <ambientLight intensity={0.25} color="#00B3FF" /> {/* Снижен для контраста */}
+        {/* Ambient: color: #0090FF, intensity: 0.3 */}
+        <ambientLight intensity={0.25} color="#0090FF" /> {/* Снижен для контраста */}
         
         {/* Дополнительный направленный свет для объёма */}
         <directionalLight
           position={[0, -2, 3]}
           intensity={0.3}
-          color="#00FFD4"
+          color="#00F6FF"
         />
         
-        {/* Внутренний (emissive light) - бело-зелёный #D1FFF5 */}
-        <pointLight position={[0, 0, 0]} intensity={0.3} color="#D1FFF5" distance={4} />
+        {/* Внутренний (emissive light) - бело-синий #B3E5FF */}
+        <pointLight position={[0, 0, 0]} intensity={0.3} color="#B3E5FF" distance={4} />
         
         {/* Дополнительные источники для объёма */}
-        <pointLight position={[3, 3, 3]} intensity={0.2} color="#00FFD4" distance={6} />
-        <pointLight position={[-3, -2, 3]} intensity={0.15} color="#7B61FF" distance={6} />
+        <pointLight position={[3, 3, 3]} intensity={0.2} color="#00F6FF" distance={6} />
+        <pointLight position={[-3, -2, 3]} intensity={0.15} color="#0090FF" distance={6} />
         
         {/* Volumetric fog (плотность 0.05) */}
-        <fog attach="fog" args={['#0B0C12', 1, 12]} />
+        <fog attach="fog" args={['#001A26', 1, 12]} />
         
         {/* Environment для отражений */}
         <Environment preset="night" />
@@ -1280,19 +1231,19 @@ export default function Wallet3D() {
         <BackgroundGrid />
         <BackgroundParticles />
         
-        {/* Кошелёк */}
+        {/* Vault (сейф) */}
         <Suspense fallback={null}>
           <Wallet isOpen={isOpen} onToggle={handleToggle} hovered={hovered} />
         </Suspense>
         
-        {/* Soft shadow под кошельком (вниз, размытие 15px, opacity 0.25) */}
+        {/* Soft shadow под сейфом (вниз, размытие 15px, opacity 0.25) */}
         <ContactShadows
           position={[0, -0.5, 0]}
           opacity={0.4} // Усилена для реализма
           scale={6} // Увеличен масштаб
           blur={20} // Больше размытие
           far={2.5}
-          color="#00C6FF"
+          color="#0090FF"
         />
         
         {/* Дополнительная тень для глубины */}
@@ -1309,8 +1260,8 @@ export default function Wallet3D() {
         <mesh position={[0, -0.4, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[3, 2]} />
           <meshStandardMaterial
-            color="#00C6FF"
-            emissive="#00C6FF"
+            color="#0090FF"
+            emissive="#0090FF"
             emissiveIntensity={0.3}
             transparent
             opacity={0.1}
@@ -1327,18 +1278,6 @@ export default function Wallet3D() {
           />
         )}
       </Canvas>
-
-      {/* Подсказка */}
-        {!isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center"
-          >
-          <p className="text-sm text-402-green/70 font-light">Click to open wallet</p>
-          </motion.div>
-        )}
     </div>
   )
 }

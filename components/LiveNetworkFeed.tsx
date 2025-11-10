@@ -20,9 +20,9 @@ export default function LiveNetworkFeed() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 
   const actions = [
-    { text: 'generated via wallet402', icon: CheckCircle2, color: 'text-402-green' },
-    { text: 'connected to 402 stream', icon: Sparkles, color: 'text-402-purple' },
-    { text: 'exported private key', icon: Key, color: 'text-solana-teal' },
+    { text: 'stored on Filecoin network', icon: CheckCircle2, color: 'text-fil-cyan' },
+    { text: 'connected to storage node', icon: Sparkles, color: 'text-fil-blue' },
+    { text: 'encrypted data uploaded', icon: Key, color: 'text-fil-cyan' },
   ]
 
   useEffect(() => {
@@ -68,12 +68,12 @@ export default function LiveNetworkFeed() {
             Live Network Feed
           </h2>
           <p className="text-lg text-muted-foreground">
-            Real-time activity from the 402 network
+            Real-time activity from the Filecoin network
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="glass-effect rounded-xl p-6 border border-402-purple/20">
+          <div className="glass-effect rounded-xl p-6 border border-fil-blue/20">
             <div className="space-y-3">
               <AnimatePresence>
                 {feedItems.map((item, index) => {
@@ -92,7 +92,7 @@ export default function LiveNetworkFeed() {
                       onMouseLeave={() => setHoveredItem(null)}
                     >
                       <div className="flex items-center gap-4 flex-1">
-                        <Icon className={`w-5 h-5 ${actionConfig?.color || 'text-402-green'}`} />
+                        <Icon className={`w-5 h-5 ${actionConfig?.color || 'text-fil-cyan'}`} />
                         <div className="flex-1">
                           <span className="font-mono text-sm">{item.wallet}</span>
                           <span className="text-muted-foreground ml-2">→ {item.action}</span>
@@ -106,12 +106,12 @@ export default function LiveNetworkFeed() {
                         <motion.div
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="absolute right-4 bg-card border border-402-purple/30 rounded-lg p-4 shadow-xl z-10"
+                          className="absolute right-4 bg-card border border-fil-blue/30 rounded-lg p-4 shadow-xl z-10"
                         >
                           <QRCodeSVG value={item.wallet} size={128} />
                           <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
                             <ExternalLink className="w-3 h-3" />
-                            <span>View on Solscan</span>
+                            <span>View on Filfox</span>
                           </div>
                         </motion.div>
                       )}

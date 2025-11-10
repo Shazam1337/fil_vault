@@ -22,11 +22,11 @@ export default function WalletTerminal() {
     setWalletAddress(null)
 
     const steps: Array<{ text: string; type: TerminalLine['type']; delay: number }> = [
-      { text: '> Generating private key...', type: 'command', delay: 500 },
-      { text: '> Encrypting...', type: 'command', delay: 1000 },
-      { text: '> 402 protocol handshake...', type: 'command', delay: 1500 },
+      { text: '> Encrypting file...', type: 'command', delay: 500 },
+      { text: '> Connecting to Filecoin network...', type: 'command', delay: 1000 },
+      { text: '> Uploading to storage node...', type: 'command', delay: 1500 },
       { text: 'OK', type: 'success', delay: 2000 },
-      { text: '> Wallet created:', type: 'command', delay: 2500 },
+      { text: '> File stored:', type: 'command', delay: 2500 },
     ]
 
     steps.forEach((step, index) => {
@@ -35,7 +35,7 @@ export default function WalletTerminal() {
         
         if (index === steps.length - 1) {
           setTimeout(() => {
-            const address = `4Kzz${Math.random().toString(36).substring(2, 8)}...${Math.random().toString(36).substring(2, 5)}9Qa`
+            const address = `f0${Math.random().toString(36).substring(2, 8)}...${Math.random().toString(36).substring(2, 5)}`
             setWalletAddress(address)
             setLines(prev => [...prev, { text: `> ${address} ✅`, type: 'success' }])
             setIsGenerating(false)
@@ -60,7 +60,7 @@ export default function WalletTerminal() {
   }
 
   return (
-    <section className="py-12 relative">
+    <section id="storage-terminal" className="py-12 relative scroll-mt-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -70,23 +70,23 @@ export default function WalletTerminal() {
           className="text-center mb-8"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3 font-space-grotesk">
-            Wallet Simulation Terminal
+            Storage Terminal
           </h2>
           <p className="text-lg text-muted-foreground">
-            Experience real-time wallet generation
+            Experience real-time file storage on Filecoin
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="glass-effect rounded-xl p-6 border border-402-purple/20">
+          <div className="glass-effect rounded-xl p-6 border border-fil-blue/20">
             <div className="flex items-center gap-2 mb-4">
-              <TerminalIcon className="w-5 h-5 text-402-green" />
-              <span className="text-sm font-mono text-muted-foreground">wallet402 terminal</span>
+              <TerminalIcon className="w-5 h-5 text-fil-cyan" />
+              <span className="text-sm font-mono text-muted-foreground">filvault terminal</span>
             </div>
             
             <div
               ref={terminalRef}
-              className="bg-402-dark rounded-lg p-6 font-mono text-sm h-64 overflow-y-auto mb-4"
+              className="bg-fil-dark rounded-lg p-6 font-mono text-sm h-64 overflow-y-auto mb-4"
               style={{ scrollbarWidth: 'thin' }}
             >
               <AnimatePresence>
@@ -96,7 +96,7 @@ export default function WalletTerminal() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     className={`mb-2 ${
-                      line.type === 'success' ? 'text-402-green' :
+                      line.type === 'success' ? 'text-fil-cyan' :
                       line.type === 'error' ? 'text-red-400' :
                       line.type === 'output' ? 'text-muted-foreground' :
                       'text-foreground'
@@ -122,32 +122,32 @@ export default function WalletTerminal() {
               <button
                 onClick={generateWallet}
                 disabled={isGenerating}
-                className="px-6 py-3 bg-gradient-to-r from-402-purple to-402-green rounded-lg font-semibold text-white hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 bg-gradient-to-r from-fil-blue to-fil-cyan rounded-lg font-semibold text-white hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isGenerating ? 'Generating...' : 'Generate Wallet'}
+                {isGenerating ? 'Uploading...' : 'Upload File'}
               </button>
 
               {walletAddress && (
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-muted-foreground">Address:</span>
+                  <span className="text-sm text-muted-foreground">CID:</span>
                   <code className="text-sm bg-card/50 px-3 py-2 rounded">{walletAddress}</code>
                   <button
                     onClick={copyToClipboard}
                     className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
                   >
                     {copied ? (
-                      <Check className="w-4 h-4 text-402-green" />
+                      <Check className="w-4 h-4 text-fil-cyan" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}
                   </button>
                   <a
-                    href={`https://solscan.io/account/${walletAddress}`}
+                    href={`https://filfox.io/en/address/${walletAddress}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-402-purple hover:underline"
+                    className="text-sm text-fil-blue hover:underline"
                   >
-                    View on Solscan →
+                    View on Filfox →
                   </a>
                 </div>
               )}

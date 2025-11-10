@@ -19,21 +19,11 @@ export default function Header() {
 
   const connectWallet = async (walletType: 'phantom' | 'solflare') => {
     try {
-      // Check if wallet is installed
-      const provider = walletType === 'phantom' 
-        ? (window as any).solana 
-        : (window as any).solflare
-
-      if (!provider) {
-        alert(`${walletType === 'phantom' ? 'Phantom' : 'Solflare'} wallet not found. Please install it first.`)
-        return
-      }
-
-      // Connect to wallet
-      const response = await provider.connect()
+      // Filecoin wallet connection (placeholder for actual Filecoin wallet integration)
+      // In production, this would connect to Filecoin wallet providers
       setConnectedWallet(walletType)
       setIsWalletMenuOpen(false)
-      console.log('Connected:', response.publicKey.toString())
+      console.log('Connected to Filecoin network')
     } catch (error) {
       console.error('Connection error:', error)
       alert('Failed to connect wallet')
@@ -48,23 +38,23 @@ export default function Header() {
     <header className="glass-effect sticky top-0 z-50 border-b border-border/50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-16 h-16 rounded-xl overflow-hidden flex items-center justify-center glow-primary">
+          <div className="w-24 h-24 rounded-xl overflow-hidden flex items-center justify-center">
             <img 
               src="/logo.png" 
-              alt="wallet402 logo" 
+              alt="FilVault logo" 
               className="w-full h-full object-contain"
             />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground font-space-grotesk tracking-brand">wallet402</h1>
-            <p className="text-xs text-muted-foreground tracking-tight">Private Gateway of the 402 Economy</p>
+            <h1 className="text-3xl font-bold text-foreground font-space-grotesk tracking-brand">FILvault</h1>
+            <p className="text-xs text-muted-foreground tracking-tight">Decentralized Storage on Filecoin</p>
           </div>
         </div>
         
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-            <div className="w-2 h-2 bg-402-green rounded-full animate-pulse" />
-            <span>Online: {onlineUsers} users</span>
+            <div className="w-2 h-2 bg-fil-cyan rounded-full animate-pulse" />
+            <span>Network: {onlineUsers} nodes</span>
           </div>
           
           <div className="flex items-center gap-3">
@@ -72,8 +62,8 @@ export default function Header() {
             <div className="relative">
               {connectedWallet ? (
                 <div className="flex items-center gap-3">
-                  <div className="px-4 py-2 rounded-lg bg-402-green/20 border border-402-green/30 text-402-green text-sm font-semibold">
-                    {connectedWallet === 'phantom' ? 'Phantom' : 'Solflare'} Connected
+                  <div className="px-4 py-2 rounded-lg bg-fil-cyan/20 border border-fil-cyan/30 text-fil-cyan text-sm font-semibold">
+                    Filecoin Wallet Connected
                   </div>
                   <button
                     onClick={disconnectWallet}
@@ -89,7 +79,7 @@ export default function Header() {
                 <>
                   <button
                     onClick={() => setIsWalletMenuOpen(!isWalletMenuOpen)}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-402-purple to-402-green rounded-lg font-semibold text-white hover:scale-105 transition-all glow-primary"
+                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-fil-blue to-fil-cyan rounded-lg font-semibold text-white hover:scale-105 transition-all glow-primary"
                   >
                     <Wallet className="w-4 h-4" />
                     Connect Wallet
@@ -101,21 +91,21 @@ export default function Header() {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute right-0 mt-2 w-48 glass-effect rounded-lg border border-402-purple/30 p-2 shadow-xl"
+                        className="absolute right-0 mt-2 w-48 glass-effect rounded-lg border border-fil-blue/30 p-2 shadow-xl"
                       >
                         <button
                           onClick={() => connectWallet('phantom')}
                           className="w-full text-left px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors"
                         >
-                          <div className="font-semibold tracking-tight">Phantom</div>
-                          <div className="text-xs text-muted-foreground tracking-tight">Most popular</div>
+                          <div className="font-semibold tracking-tight">Filecoin Wallet</div>
+                          <div className="text-xs text-muted-foreground tracking-tight">Connect to network</div>
                         </button>
                         <button
                           onClick={() => connectWallet('solflare')}
                           className="w-full text-left px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors mt-2"
                         >
-                          <div className="font-semibold tracking-tight">Solflare</div>
-                          <div className="text-xs text-muted-foreground tracking-tight">Secure & fast</div>
+                          <div className="font-semibold tracking-tight">Ledger</div>
+                          <div className="text-xs text-muted-foreground tracking-tight">Hardware wallet</div>
                         </button>
                       </motion.div>
                     )}
@@ -126,14 +116,14 @@ export default function Header() {
 
             {/* X Button */}
             <a
-              href="https://x.com/wallet402"
+              href="https://x.com/FILvault"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-primary/10 transition-colors group"
-              title="Follow @wallet402 on X"
-              aria-label="Follow wallet402 on X (Twitter)"
+              title="Follow @FILvault on X"
+              aria-label="Follow FilVault on X (Twitter)"
             >
-              <svg className="w-10 h-10 text-foreground group-hover:text-402-purple transition-colors" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-10 h-10 text-foreground group-hover:text-fil-blue transition-colors" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>

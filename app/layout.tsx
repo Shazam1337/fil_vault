@@ -21,8 +21,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'wallet402 — Private Wallet Layer for the 402 Protocol',
-  description: 'Generate secure Solana wallets designed for 402 microtransactions and anonymity. Private gateway of the 402 economy.',
+  title: 'FilVault — Decentralized Storage & Transaction Layer on Filecoin',
+  description: 'Private storage & transaction layer built on Filecoin. Your files don\'t live in the cloud. They live on Filecoin.',
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',

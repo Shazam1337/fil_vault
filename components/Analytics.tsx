@@ -14,10 +14,10 @@ interface Metric {
 
 export default function Analytics() {
   const [metrics, setMetrics] = useState<Metric[]>([
-    { label: 'Total 402-linked wallets', value: 14092, icon: Users, color: 'text-402-purple' },
-    { label: 'Daily wallet creations', value: 342, icon: TrendingUp, color: 'text-402-green' },
-    { label: 'Uptime', value: 99.9, icon: Activity, color: 'text-solana-teal' },
-    { label: 'Latest 402 fee claims', value: 1247, icon: Zap, color: 'text-solana-green' },
+    { label: 'Total storage nodes', value: 14092, icon: Users, color: 'text-fil-blue' },
+    { label: 'Daily storage uploads', value: 342, icon: TrendingUp, color: 'text-fil-cyan' },
+    { label: 'Network uptime', value: 99.9, icon: Activity, color: 'text-fil-cyan' },
+    { label: 'Data stored (PiB)', value: 1247, icon: Zap, color: 'text-fil-blue' },
   ])
 
   const [chartData, setChartData] = useState<Array<{ time: string; wallets: number }>>([])
@@ -76,7 +76,7 @@ export default function Analytics() {
             Network Analytics
           </h2>
           <p className="text-lg text-muted-foreground">
-            Real-time metrics from the 402 economy
+            Real-time metrics from the Filecoin network
           </p>
         </motion.div>
 
@@ -90,7 +90,7 @@ export default function Analytics() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-effect rounded-xl p-6 border border-402-purple/20"
+                className="glass-effect rounded-xl p-6 border border-fil-blue/20"
               >
                 <div className="flex items-center justify-between mb-4">
                   <Icon className={`w-6 h-6 ${metric.color}`} />
@@ -111,12 +111,12 @@ export default function Analytics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="glass-effect rounded-xl p-6 border border-402-purple/20"
+          className="glass-effect rounded-xl p-6 border border-fil-blue/20"
         >
-          <h3 className="text-2xl font-semibold mb-6">Wallet Generation Growth</h3>
+          <h3 className="text-2xl font-semibold mb-6">Storage Growth</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(139, 92, 246, 0.1)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 144, 255, 0.1)" />
               <XAxis 
                 dataKey="time" 
                 stroke="rgba(255, 255, 255, 0.5)"
@@ -128,17 +128,17 @@ export default function Analytics() {
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'rgba(10, 10, 15, 0.9)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  backgroundColor: 'rgba(0, 26, 38, 0.9)',
+                  border: '1px solid rgba(0, 144, 255, 0.3)',
                   borderRadius: '8px',
                 }}
               />
               <Line
                 type="monotone"
                 dataKey="wallets"
-                stroke="#8B5CF6"
+                stroke="#0090FF"
                 strokeWidth={2}
-                dot={{ fill: '#8B5CF6', r: 3 }}
+                dot={{ fill: '#0090FF', r: 3 }}
                 activeDot={{ r: 5 }}
               />
             </LineChart>
@@ -153,8 +153,8 @@ export default function Analytics() {
           className="text-center mt-8"
         >
           <p className="text-lg text-muted-foreground">
-            <span className="text-402-green font-semibold">wallet402</span> is an active node of the{' '}
-            <span className="text-402-purple font-semibold">402 economy</span>.
+            <span className="text-fil-cyan font-semibold">FilVault</span> is an active node of the{' '}
+            <span className="text-fil-blue font-semibold">Filecoin network</span>.
           </p>
         </motion.div>
       </div>

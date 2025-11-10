@@ -13,15 +13,14 @@ module.exports = {
         'space-grotesk': ['var(--font-space-grotesk)', 'Space Grotesk', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       colors: {
-        'solana-purple': '#9945FF',
-        'solana-green': '#14F195',
-        'solana-teal': '#00D4FF',
-        '402-dark': '#0a0a0f',
-        '402-purple': '#8B5CF6',
-        '402-green': '#10B981',
-        '402-teal': '#00D4FF',
+        'fil-blue': '#0090FF',
+        'fil-cyan': '#00F6FF',
+        'fil-glow': '#33C3FF',
+        'fil-dark': '#001A26',
+        'vault-blue': '#0090FF',
+        'vault-cyan': '#00F6FF',
         'border': 'rgba(255, 255, 255, 0.1)',
-        'card': 'rgba(10, 10, 15, 0.8)',
+        'card': 'rgba(0, 26, 38, 0.8)',
         'muted-foreground': 'rgba(255, 255, 255, 0.6)',
       },
       letterSpacing: {
@@ -35,8 +34,8 @@ module.exports = {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(139, 92, 246, 0.3)' },
-          '100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(139, 92, 246, 0.5)' },
+          '0%': { boxShadow: '0 0 5px rgba(0, 144, 255, 0.5), 0 0 10px rgba(0, 144, 255, 0.3)' },
+          '100%': { boxShadow: '0 0 20px rgba(0, 144, 255, 0.8), 0 0 30px rgba(0, 246, 255, 0.5)' },
         },
         'network-pulse': {
           '0%, 100%': { opacity: 0.4 },
